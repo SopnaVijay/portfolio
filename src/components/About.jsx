@@ -89,7 +89,7 @@ const About = () => {
           <div className="flex justify-between items-center border-b border-[#915eff] pb-3 mb-4">
             <h3 className="text-white text-xl font-bold">Resume Highlights</h3>
             <a
-              href="/resume.pdf"
+              href="resume.pdf"
               download
               className="bg-[#915eff] hover:bg-[#7d4edb] text-white py-1.5 px-4 rounded-full text-sm transition-all duration-300 inline-flex items-center"
             >

@@ -43,7 +43,7 @@ const Hero = () => {
               Let's Connect
             </a>
             <a
-              href="/resume.pdf"
+              href="resume.pdf"
               download
               className="border-2 border-[#915eff] hover:bg-[#915eff]/10 text-white py-2 px-6 rounded-full font-bold text-lg transition-all duration-300 inline-flex items-center"
             >
