@@ -21,6 +21,28 @@ const Hero = () => {
             Software Engineer | AI & ML Enthusiast | <br className="sm:block hidden" />
             Full-Stack Developer | Problem Solver
           </p>
+          <div className="mt-4 flex flex-col gap-2 text-white-100">
+            <div className="flex items-center">
+              <span className="text-[#915eff] font-bold mr-2">✦</span>
+              <span className="text-lg">Passionate about creating innovative solutions</span>
+            </div>
+            <div className="flex items-center">
+              <span className="text-[#915eff] font-bold mr-2">✦</span>
+              <span className="text-lg">Specialized in React, Node.js, and Cloud Technologies</span>
+            </div>
+            <div className="flex items-center">
+              <span className="text-[#915eff] font-bold mr-2">✦</span>
+              <span className="text-lg">Building the future through code</span>
+            </div>
+          </div>
+          <div className="mt-6">
+            <a
+              href="#contact"
+              className="bg-[#915eff] hover:bg-[#7d4edb] text-white py-2 px-6 rounded-full font-bold text-lg transition-all duration-300 inline-block"
+            >
+              Let's Connect
+            </a>
+          </div>
         </div>
       </div>
 

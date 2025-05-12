@@ -55,6 +55,32 @@ const About = () => {
         and software engineering principles to real-world challenges.
       </motion.p>
 
+      <motion.div
+        variants={fadeIn("", "", 0.2, 1)}
+        className="mt-8 flex flex-wrap gap-6"
+      >
+        <div className="bg-tertiary rounded-xl p-4 w-full md:w-[48%] shadow-lg">
+          <h3 className="text-white text-xl font-bold border-b border-[#915eff] pb-2 mb-3">Education</h3>
+          <div className="mb-3">
+            <p className="text-white font-semibold">Bachelor of Technology in Computer Science</p>
+            <p className="text-secondary">Vellore Institute of Technology • 2020-2024</p>
+            <p className="text-[#915eff] mt-1">CGPA: 8.5/10</p>
+          </div>
+        </div>
+
+        <div className="bg-tertiary rounded-xl p-4 w-full md:w-[48%] shadow-lg">
+          <h3 className="text-white text-xl font-bold border-b border-[#915eff] pb-2 mb-3">Key Skills</h3>
+          <div className="flex flex-wrap gap-2">
+            {["React", "Node.js", "Python", "Java", "C++", "Machine Learning", "Cloud Computing",
+              "Data Structures", "Algorithms", "Problem Solving"].map((skill) => (
+              <span key={skill} className="bg-black/30 text-white px-3 py-1 rounded-full text-sm">
+                {skill}
+              </span>
+            ))}
+          </div>
+        </div>
+      </motion.div>
+
       <div className="mt-20 flex flex-wrap gap-10">
         {services.map((service, index) => (
           <ServiceCard key={service.title} index={index} {...service} />
