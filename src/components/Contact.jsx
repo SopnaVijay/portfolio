@@ -1,10 +1,13 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 
 import { styles } from "../styles";
 import { SectionWrapper } from "../hoc";
 import { slideIn } from "../utils/motion";
+
+// Initialize EmailJS
+emailjs.init("Oo3_1ZGwVvNFIwxSx");
 
 const Contact = () => {
   const formRef = useRef();
@@ -15,6 +18,8 @@ const Contact = () => {
   });
 
   const [loading, setLoading] = useState(false);
+  const [formErrors, setFormErrors] = useState({});
+  const [submitStatus, setSubmitStatus] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -25,15 +30,43 @@ const Contact = () => {
     });
   };
 
+  const validateForm = () => {
+    const errors = {};
+
+    if (!form.name.trim()) {
+      errors.name = "Name is required";
+    }
+
+    if (!form.email.trim()) {
+      errors.email = "Email is required";
+    } else if (!/^\S+@\S+\.\S+$/.test(form.email)) {
+      errors.email = "Email is invalid";
+    }
+
+    if (!form.message.trim()) {
+      errors.message = "Message is required";
+    }
+
+    setFormErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    setSubmitStatus(null);
+
+    // Validate form before submission
+    if (!validateForm()) {
+      return;
+    }
+
     setLoading(true);
 
-    // Note: You'll need to set up an EmailJS account and replace these with your actual credentials
+    // Using EmailJS to send emails
     emailjs
       .send(
-        'service_portfolio',
-        'template_contact',
+        'service_rnz9jtj', // Your EmailJS service ID
+        'template_yjnwkzp', // Your EmailJS template ID
         {
           from_name: form.name,
           to_name: "Sopna",
@@ -41,24 +74,34 @@ const Contact = () => {
           to_email: "sopna10.tech@gmail.com",
           message: form.message,
         },
-        'your_emailjs_public_key'
+        'Oo3_1ZGwVvNFIwxSx' // Your EmailJS public key
       )
       .then(
-        () => {
+        (response) => {
+          console.log("SUCCESS!", response.status, response.text);
           setLoading(false);
-          alert("Thank you. I will get back to you as soon as possible.");
+          setSubmitStatus("success");
 
           setForm({
             name: "",
             email: "",
             message: "",
           });
+
+          // Clear success message after 5 seconds
+          setTimeout(() => {
+            setSubmitStatus(null);
+          }, 5000);
         },
         (error) => {
+          console.error("FAILED...", error);
           setLoading(false);
-          console.error(error);
+          setSubmitStatus("error");
 
-          alert("Ahh, something went wrong. Please try again.");
+          // Clear error message after 5 seconds
+          setTimeout(() => {
+            setSubmitStatus(null);
+          }, 5000);
         }
       );
   };
@@ -87,9 +130,15 @@ const Contact = () => {
               value={form.name}
               onChange={handleChange}
               placeholder="What's your name?"
-              className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
+              className={`bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-2 font-medium ${
+                formErrors.name ? "border-red-500" : "border-transparent"
+              }`}
             />
+            {formErrors.name && (
+              <p className="text-red-500 text-sm mt-1">{formErrors.name}</p>
+            )}
           </label>
+
           <label className="flex flex-col">
             <span className="text-white font-medium mb-4">Your email</span>
             <input
@@ -97,10 +146,16 @@ const Contact = () => {
               name="email"
               value={form.email}
               onChange={handleChange}
-              placeholder="What's your web address?"
-              className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
+              placeholder="What's your email address?"
+              className={`bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-2 font-medium ${
+                formErrors.email ? "border-red-500" : "border-transparent"
+              }`}
             />
+            {formErrors.email && (
+              <p className="text-red-500 text-sm mt-1">{formErrors.email}</p>
+            )}
           </label>
+
           <label className="flex flex-col">
             <span className="text-white font-medium mb-4">Your Message</span>
             <textarea
@@ -109,15 +164,37 @@ const Contact = () => {
               value={form.message}
               onChange={handleChange}
               placeholder="What you want to say?"
-              className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
+              className={`bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-2 font-medium ${
+                formErrors.message ? "border-red-500" : "border-transparent"
+              }`}
             />
+            {formErrors.message && (
+              <p className="text-red-500 text-sm mt-1">{formErrors.message}</p>
+            )}
           </label>
+
+          {submitStatus === "success" && (
+            <div className="bg-green-900/50 text-green-300 p-3 rounded-lg">
+              Thank you! Your message has been sent successfully. I will get back to you as soon as possible.
+            </div>
+          )}
+
+          {submitStatus === "error" && (
+            <div className="bg-red-900/50 text-red-300 p-3 rounded-lg">
+              Something went wrong while sending your message. Please try again or contact me directly at sopna10.tech@gmail.com
+            </div>
+          )}
 
           <button
             type="submit"
-            className="bg-tertiary py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary"
+            disabled={loading}
+            className={`py-3 px-8 rounded-xl outline-none w-fit font-bold shadow-md shadow-primary transition-all duration-300 ${
+              loading
+                ? "bg-gray-600 text-gray-300 cursor-not-allowed"
+                : "bg-[#915eff] hover:bg-[#7d4edb] text-white cursor-pointer"
+            }`}
           >
-            {loading ? "Sending..." : "Send"}
+            {loading ? "Sending..." : "Send Message"}
           </button>
         </form>
       </motion.div>
