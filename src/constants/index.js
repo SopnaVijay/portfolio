@@ -316,6 +316,27 @@ const projects = [
     image: earthquake,
     source_code_link: "https://github.com/SopnaVijay",
   },
+  {
+    name: "Portfolio Website",
+    description:
+      "Designed and developed a modern, responsive portfolio website using React.js, Three.js, and Tailwind CSS to showcase my projects, skills, and professional experience.",
+    tags: [
+      {
+        name: "react",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "threejs",
+        color: "green-text-gradient",
+      },
+      {
+        name: "tailwind",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: webportal, // Reusing an existing image, you can replace with a portfolio screenshot
+    source_code_link: "https://github.com/SopnaVijay/portfolio",
+  },
 ];
 
 export { services, technologies, experiences, testimonials, projects };

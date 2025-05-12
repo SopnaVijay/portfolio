@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Optimizer</title>
+</head>
+<body>
+    <h1>Image Optimizer</h1>
+    <p>This tool will optimize your image and save it as a smaller file.</p>
+    
+    <canvas id="canvas" style="display: none;"></canvas>
+    <img id="original" src="src/assets/sopna.jpg" style="max-width: 300px; margin-bottom: 20px;">
+    <br>
+    <button onclick="optimizeImage()">Optimize Image</button>
+    <br><br>
+    <a id="download" download="sopna-optimized.jpg" href="#">Download Optimized Image</a>
+    
+    <script>
+        function optimizeImage() {
+            const img = document.getElementById('original');
+            const canvas = document.getElementById('canvas');
+            const ctx = canvas.getContext('2d');
+            
+            // Set canvas dimensions to desired size (300x300 pixels)
+            const size = 300;
+            canvas.width = size;
+            canvas.height = size;
+            
+            // Draw image on canvas with resizing
+            ctx.drawImage(img, 0, 0, size, size);
+            
+            // Convert to JPEG with 80% quality
+            const dataUrl = canvas.toDataURL('image/jpeg', 0.8);
+            
+            // Set download link
+            const downloadLink = document.getElementById('download');
+            downloadLink.href = dataUrl;
+            
+            // Show optimized image
+            const optimizedImg = new Image();
+            optimizedImg.src = dataUrl;
+            document.body.appendChild(optimizedImg);
+            
+            alert('Image optimized! Click the download link to save it.');
+        }
+    </script>
+</body>
+</html>
