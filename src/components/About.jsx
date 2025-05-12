@@ -81,6 +81,53 @@ const About = () => {
         </div>
       </motion.div>
 
+      <motion.div
+        variants={fadeIn("", "", 0.3, 1)}
+        className="mt-8"
+      >
+        <div className="bg-tertiary rounded-xl p-6 shadow-lg">
+          <div className="flex justify-between items-center border-b border-[#915eff] pb-3 mb-4">
+            <h3 className="text-white text-xl font-bold">Resume Highlights</h3>
+            <a
+              href="/resume.pdf"
+              download
+              className="bg-[#915eff] hover:bg-[#7d4edb] text-white py-1.5 px-4 rounded-full text-sm transition-all duration-300 inline-flex items-center"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              Full Resume
+            </a>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <h4 className="text-[#915eff] font-semibold mb-2">Work Experience</h4>
+              <div className="mb-3 pl-3 border-l-2 border-[#915eff]/30">
+                <p className="text-white font-medium">Software Engineering Intern</p>
+                <p className="text-secondary text-sm">Ernst & Young • 2023</p>
+                <p className="text-secondary text-sm mt-1">Developed AI solutions for business challenges</p>
+              </div>
+              <div className="mb-3 pl-3 border-l-2 border-[#915eff]/30">
+                <p className="text-white font-medium">AI Research Intern</p>
+                <p className="text-secondary text-sm">LiveWires • 2022</p>
+                <p className="text-secondary text-sm mt-1">Implemented machine learning algorithms</p>
+              </div>
+            </div>
+
+            <div>
+              <h4 className="text-[#915eff] font-semibold mb-2">Certifications & Achievements</h4>
+              <ul className="list-disc list-inside text-secondary space-y-2">
+                <li className="text-sm"><span className="text-white">AWS Certified Developer</span> - Amazon Web Services</li>
+                <li className="text-sm"><span className="text-white">Machine Learning Specialization</span> - Stanford Online</li>
+                <li className="text-sm"><span className="text-white">Hackathon Winner</span> - VIT TechFest 2022</li>
+                <li className="text-sm"><span className="text-white">Dean's List</span> - Academic Excellence Award</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+
       <div className="mt-20 flex flex-wrap gap-10">
         {services.map((service, index) => (
           <ServiceCard key={service.title} index={index} {...service} />
