@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { styles } from "../styles";
+import profileImage from "../assets/sopna.jpg";
 import { ComputersCanvas } from "./canvas";
+
 
 const Hero = () => {
   return (
@@ -13,14 +15,21 @@ const Hero = () => {
           <div className="w-1 sm:h-80 h-40 violet-gradient" />
         </div>
 
-        <div>
-          <h1 className={`${styles.heroHeadText} text-white`}>
-            Hi, I'm <span className="text-[#915eff]">Sopna</span>
-          </h1>
-          <p className={`${styles.heroSubText} mt-2 text-white-100`}>
-            Software Engineer | AI & ML Enthusiast | <br className="sm:block hidden" />
-            Full-Stack Developer | Problem Solver
-          </p>
+      <div>
+  <div className="flex items-center gap-6 mb-4">
+    <h1 className={`${styles.heroHeadText} text-white`}>
+      Hi, I'm <span className="text-[#915eff]">Sopna</span>
+    </h1>
+    <img 
+      src={profileImage} 
+      alt="Sopna Vijay" 
+      className="rounded-full w-32 h-32 object-cover border-4 border-[#915eff] ml-4"
+    />
+  </div>
+  <p className={`${styles.heroSubText} mt-2 text-white-100`}>
+    Software Engineer | AI & ML Enthusiast | <br className="sm:block hidden" />
+    Full-Stack Developer | Problem Solver
+  </p>
           <div className="mt-4 flex flex-col gap-2 text-white-100">
             <div className="flex items-center">
               <span className="text-[#915eff] font-bold mr-2">✦</span>
