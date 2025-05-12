@@ -275,6 +275,27 @@ const projects = [
     source_code_link: "https://github.com/SopnaVijay",
   },
   {
+    name: "Bank Fraud Detection Platform",
+    description:
+      "Showcased a cutting-edge Bank Fraud Detection System built using Machine Learning at our interactive Expo and Product Launch Platform, designed to identify fraudulent transactions in real-time.",
+    tags: [
+      {
+        name: "python",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "ml",
+        color: "green-text-gradient",
+      },
+      {
+        name: "data-analysis",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: expoplatform, // Using expo platform image since it's related
+    source_code_link: "https://github.com/SopnaVijay",
+  },
+  {
     name: "Automated Fire Detection System",
     description:
       "Designed and implemented a real-time AI-based fire detection system using YOLO and OpenCV, optimizing inference speed by 30% for faster alerts.",

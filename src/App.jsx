@@ -17,7 +17,7 @@ const Navbar = () => {
       }
 
       // Update active section based on scroll position
-      const sections = ['home', 'about', 'experience', 'education', 'projects', 'contact'];
+      const sections = ['home', 'about', 'experience', 'education', 'projects', 'skills', 'contact'];
       for (const section of sections.reverse()) {
         const element = document.getElementById(section);
         if (element && window.scrollY >= element.offsetTop - 200) {
@@ -54,7 +54,7 @@ const Navbar = () => {
           Sopna Vijay
         </motion.div>
         <ul className="hidden md:flex space-x-8">
-          {['home', 'about', 'experience', 'education', 'projects', 'contact'].map((item) => (
+          {['home', 'about', 'experience', 'education', 'projects', 'skills', 'contact'].map((item) => (
             <li key={item}>
               <button
                 onClick={() => scrollToSection(item)}
@@ -118,12 +118,6 @@ const Hero = () => {
               className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-full font-medium transition-colors"
             >
               Contact Me
-            </a>
-            <a
-              href="#projects"
-              className="border border-white hover:border-purple-500 text-white hover:text-purple-500 px-6 py-3 rounded-full font-medium transition-colors"
-            >
-              View Projects
             </a>
           </motion.div>
           <motion.div
@@ -394,6 +388,12 @@ const Projects = () => {
       link: "https://github.com/SopnaVijay"
     },
     {
+      title: "Bank Fraud Detection Platform",
+      description: "Showcased a cutting-edge Bank Fraud Detection System built using Machine Learning at our interactive Expo and Product Launch Platform, designed to identify fraudulent transactions in real-time.",
+      tags: ["Python", "ML", "Data Analysis"],
+      link: "https://github.com/SopnaVijay"
+    },
+    {
       title: "Automated Fire Detection System",
       description: "Designed and implemented a real-time AI-based fire detection system using YOLO and OpenCV, optimizing inference speed by 30% for faster alerts.",
       tags: ["Python", "YOLO", "OpenCV"],
@@ -443,14 +443,6 @@ const Projects = () => {
                     </span>
                   ))}
                 </div>
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded transition-colors"
-                >
-                  View Project
-                </a>
               </div>
             </motion.div>
           ))}
@@ -589,6 +581,148 @@ const Footer = () => {
   );
 };
 
+// Skills Section
+const Skills = () => {
+  const technicalSkills = [
+    "Python", "Java", "C++", "JavaScript",
+    "React.js", "Node.js", "Express.js",
+    "MongoDB", "PostgreSQL", "MySQL",
+    "TensorFlow", "PyTorch", "Scikit-learn",
+    "Git", "Docker", "AWS", "Azure"
+  ];
+
+  const softSkills = [
+    "Problem Solving", "Critical Thinking",
+    "Communication", "Teamwork",
+    "Leadership", "Time Management",
+    "Adaptability", "Creativity"
+  ];
+
+  const hobbies = [
+    "Reading", "Hiking", "Photography",
+    "Chess", "Coding Challenges",
+    "Music", "Travel"
+  ];
+
+  const coActivities = [
+    "Student Council Member",
+    "Hackathon Participant",
+    "Tech Club Organizer",
+    "Volunteer at Code for Good",
+    "Open Source Contributor",
+    "AI Research Assistant"
+  ];
+
+  const certifications = [
+    "AWS Certified Developer",
+    "Machine Learning Specialization (Coursera)",
+    "Full-Stack Web Development (Udemy)",
+    "Python for Data Science (IBM)",
+    "TensorFlow Developer Certificate",
+    "React.js Advanced Concepts"
+  ];
+
+  return (
+    <section id="skills" className="py-20 bg-tertiary">
+      <div className="container mx-auto px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl font-bold text-white mb-2">Skills & Activities</h2>
+          <div className="w-16 h-1 bg-purple-500 mx-auto"></div>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            viewport={{ once: true }}
+            className="bg-black-100 p-6 rounded-lg shadow-lg"
+          >
+            <h3 className="text-xl font-bold text-white mb-4">Technical Skills</h3>
+            <div className="flex flex-wrap gap-2">
+              {technicalSkills.map((skill, index) => (
+                <span key={index} className="bg-purple-900 text-purple-300 px-3 py-1 rounded-full text-sm">
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="bg-black-100 p-6 rounded-lg shadow-lg"
+          >
+            <h3 className="text-xl font-bold text-white mb-4">Soft Skills</h3>
+            <div className="flex flex-wrap gap-2">
+              {softSkills.map((skill, index) => (
+                <span key={index} className="bg-purple-900 text-purple-300 px-3 py-1 rounded-full text-sm">
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            viewport={{ once: true }}
+            className="bg-black-100 p-6 rounded-lg shadow-lg"
+          >
+            <h3 className="text-xl font-bold text-white mb-4">Certifications</h3>
+            <ul className="list-disc list-inside text-gray-300 space-y-2">
+              {certifications.map((cert, index) => (
+                <li key={index}>{cert}</li>
+              ))}
+            </ul>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            viewport={{ once: true }}
+            className="bg-black-100 p-6 rounded-lg shadow-lg"
+          >
+            <h3 className="text-xl font-bold text-white mb-4">Hobbies & Interests</h3>
+            <div className="flex flex-wrap gap-2">
+              {hobbies.map((hobby, index) => (
+                <span key={index} className="bg-purple-900 text-purple-300 px-3 py-1 rounded-full text-sm">
+                  {hobby}
+                </span>
+              ))}
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            viewport={{ once: true }}
+            className="bg-black-100 p-6 rounded-lg shadow-lg md:col-span-2 lg:col-span-1"
+          >
+            <h3 className="text-xl font-bold text-white mb-4">Co-curricular Activities</h3>
+            <ul className="list-disc list-inside text-gray-300 space-y-2">
+              {coActivities.map((activity, index) => (
+                <li key={index}>{activity}</li>
+              ))}
+            </ul>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 // Main App Component
 const App = () => {
   return (
@@ -599,6 +733,7 @@ const App = () => {
       <Experience />
       <Education />
       <Projects />
+      <Skills />
       <Contact />
       <Footer />
     </div>

@@ -9,6 +9,8 @@ import Feedbacks from "./Feedbacks";
 import Contact from "./Contact";
 import Education from "./Education";
 import Achievements from "./Achievements";
+import Skills from "./Skills";
+import Loader from "./Loader";
 
 export {
   Hero,
@@ -21,6 +23,8 @@ export {
   Contact,
   Education,
   Achievements,
+  Skills,
+  Loader,
   ComputersCanvas,
   BallCanvas,
   StarsCanvas,

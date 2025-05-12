@@ -1,14 +1,14 @@
 import React from "react";
+import "./loader.css";
 
 const Loader = () => {
   return (
     <div className="flex justify-center items-center">
-      <div className="spinner">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
+      <div className="loader">
+        <div className="circle"></div>
+        <div className="circle"></div>
+        <div className="circle"></div>
+        <div className="circle"></div>
       </div>
     </div>
   );
