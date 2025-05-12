@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { styles } from "../styles";
-import profileImage from "../assets/sopna.jpg";
 import { ComputersCanvas } from "./canvas";
 
 
@@ -20,9 +19,9 @@ const Hero = () => {
     <h1 className={`${styles.heroHeadText} text-white`}>
       Hi, I'm <span className="text-[#915eff]">Sopna</span>
     </h1>
-    <img 
-      src={profileImage} 
-      alt="Sopna Vijay" 
+    <img
+      src="https://avatars.githubusercontent.com/u/SopnaVijay"
+      alt="Sopna Vijay"
       className="rounded-full w-32 h-32 object-cover border-4 border-[#915eff] ml-4"
     />
   </div>
